@@ -11,7 +11,7 @@ const colors = {
   red: '#E52E4D'
 }
 
-export const Container = styled.form`
+export const Form = styled.form`
   h2 {
     color: var(--title);
     font-size: 1.5rem;
