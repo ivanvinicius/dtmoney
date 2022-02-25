@@ -13,20 +13,20 @@ createServer({
     server.db.loadData({
       transactions: [
         {
-          id: 1,
+          id: '1',
           title: 'Desenvolvimento de site',
           price: 12000,
           type: 'income',
           category: 'Dev',
-          createAt: new Date()
+          createdAt: new Date()
         },
         {
-          id: 2,
+          id: '2',
           title: 'Hamburguer',
           price: 59,
           type: 'outcome',
           category: 'Alimentação',
-          createAt: new Date()
+          createdAt: new Date()
         }
       ]
     })

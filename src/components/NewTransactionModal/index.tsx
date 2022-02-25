@@ -1,7 +1,8 @@
 import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
 
-import { api } from '../../services/api'
+import { useTransaction } from '../../hooks/Transaction'
+
 import closeSVG from '../../assets/close.svg'
 import incomeSVG from '../../assets/income.svg'
 import outcomeSVG from '../../assets/outcome.svg'
@@ -21,15 +22,29 @@ export function NewTransactionModal({
   const [price, setPrice] = useState(0)
   const [type, setType] = useState('')
   const [category, setCategory] = useState('')
+  const { createTransaction } = useTransaction()
+
+  function clearFormValues() {
+    setTitle('')
+    setPrice(0)
+    setType('')
+    setCategory('')
+  }
 
   async function handleCreateNewTransaction(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const data = { title, price, type, category }
+    await createTransaction({
+      title,
+      price,
+      type,
+      category,
+      createdAt: String(new Date())
+    })
 
-    const response = await api.post('/transactions', data)
+    clearFormValues()
 
-    console.log(response)
+    onRequestClose()
   }
 
   return (
