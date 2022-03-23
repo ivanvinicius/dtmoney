@@ -1,1 +1,0 @@
-Dt Money - ReactJS journey by Rocketseat/Ignite
